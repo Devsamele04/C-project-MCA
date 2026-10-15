@@ -72,115 +72,115 @@ int main()
 
         switch (choice)
         {
-            case 1:
-                printf("\nCurrent Balance: Rs. %.2f\n", balance);
+        case 1:
+            printf("\nCurrent Balance: Rs. %.2f\n", balance);
+            break;
+
+        case 2:
+            printf("\nEnter deposit amount: Rs. ");
+            if (scanf("%f", &amount) != 1)
+            {
+                printf("Invalid amount!\n");
+                return 0;
+            }
+
+            if (amount <= 0)
+            {
+                printf("Amount must be greater than zero!\n");
+            }
+            else
+            {
+                balance = balance + amount;
+                printf("Deposit Successful!\n");
+                printf("Updated Balance: Rs. %.2f\n", balance);
+            }
+            break;
+
+        case 3:
+            printf("\nEnter withdrawal amount: Rs. ");
+            if (scanf("%f", &amount) != 1)
+            {
+                printf("Invalid amount!\n");
+                return 0;
+            }
+
+            if (amount <= 0)
+            {
+                printf("Amount must be greater than zero!\n");
+            }
+            else if (amount > balance)
+            {
+                printf("Insufficient Balance!\n");
+            }
+            else
+            {
+                balance = balance - amount;
+                printf("Withdrawal Successful!\n");
+                printf("Updated Balance: Rs. %.2f\n", balance);
+            }
+            break;
+
+        case 4:
+            printf("\nEnter receiver account number: ");
+
+            if (scanf("%d", &receiverAccount) != 1)
+            {
+                printf("Invalid account number!\n");
+                return 0;
+            }
+
+            if (receiverAccount <= 0)
+            {
+                printf("Invalid receiver account number!\n");
                 break;
+            }
 
-            case 2:
-                printf("\nEnter deposit amount: Rs. ");
-                if (scanf("%f", &amount) != 1)
-                {
-                    printf("Invalid amount!\n");
-                    return 0;
-                }
-
-                if (amount <= 0)
-                {
-                    printf("Amount must be greater than zero!\n");
-                }
-                else
-                {
-                    balance = balance + amount;
-                    printf("Deposit Successful!\n");
-                    printf("Updated Balance: Rs. %.2f\n", balance);
-                }
+            if (receiverAccount == accountNo)
+            {
+                printf("Cannot transfer to your own account!\n");
                 break;
+            }
 
-            case 3:
-                printf("\nEnter withdrawal amount: Rs. ");
-                if (scanf("%f", &amount) != 1)
-                {
-                    printf("Invalid amount!\n");
-                    return 0;
-                }
+            printf("Enter transfer amount: Rs. ");
 
-                if (amount <= 0)
-                {
-                    printf("Amount must be greater than zero!\n");
-                }
-                else if (amount > balance)
-                {
-                    printf("Insufficient Balance!\n");
-                }
-                else
-                {
-                    balance = balance - amount;
-                    printf("Withdrawal Successful!\n");
-                    printf("Updated Balance: Rs. %.2f\n", balance);
-                }
-                break;
+            if (scanf("%f", &amount) != 1)
+            {
+                printf("Invalid amount!\n");
+                return 0;
+            }
 
-            case 4:
-                printf("\nEnter receiver account number: ");
+            if (amount <= 0)
+            {
+                printf("Amount must be greater than zero!\n");
+            }
+            else if (amount > balance)
+            {
+                printf("Insufficient Balance!\n");
+            }
+            else
+            {
+                balance = balance - amount;
+                printf("Transfer Successful!\n");
+                printf("Receiver Account: %d\n", receiverAccount);
+                printf("Transferred: Rs. %.2f\n", amount);
+                printf("Remaining Balance: Rs. %.2f\n", balance);
+            }
+            break;
 
-                if (scanf("%d", &receiverAccount) != 1)
-                {
-                    printf("Invalid account number!\n");
-                    return 0;
-                }
+        case 5:
+            printf("\n===== ACCOUNT INFORMATION =====\n");
+            printf("Account Number: %d\n", accountNo);
+            printf("Account Status: %s\n",
+                   accountStatus == 1 ? "Active" : "Inactive");
+            printf("Current Balance: Rs. %.2f\n", balance);
+            break;
 
-                if (receiverAccount <= 0)
-                {
-                    printf("Invalid receiver account number!\n");
-                    break;
-                }
+        case 6:
+            printf("\nThank you for using our Banking System!\n");
+            break;
 
-                if (receiverAccount == accountNo)
-                {
-                    printf("Cannot transfer to your own account!\n");
-                    break;
-                }
-
-                printf("Enter transfer amount: Rs. ");
-
-                if (scanf("%f", &amount) != 1)
-                {
-                    printf("Invalid amount!\n");
-                    return 0;
-                }
-
-                if (amount <= 0)
-                {
-                    printf("Amount must be greater than zero!\n");
-                }
-                else if (amount > balance)
-                {
-                    printf("Insufficient Balance!\n");
-                }
-                else
-                {
-                    balance = balance - amount;
-                    printf("Transfer Successful!\n");
-                    printf("Receiver Account: %d\n", receiverAccount);
-                    printf("Transferred: Rs. %.2f\n", amount);
-                    printf("Remaining Balance: Rs. %.2f\n", balance);
-                }
-                break;
-
-            case 5:
-                printf("\n===== ACCOUNT INFORMATION =====\n");
-                printf("Account Number: %d\n", accountNo);
-                printf("Account Status: %s\n",
-                       accountStatus == 1 ? "Active" : "Inactive");
-                printf("Current Balance: Rs. %.2f\n", balance);
-                break;
-
-            case 6:
-                printf("\nThank you for using our Banking System!\n");
-                break;
-
-            default:
-                printf("Invalid choice! Please select 1 to 6.\n");
+        default:
+            printf("Invalid choice! Please select 1 to 6.\n");
         }
 
     } while (choice != 6);

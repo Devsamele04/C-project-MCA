@@ -65,7 +65,7 @@ Make sure GCC is installed on your system.
 Compile:
 
 ```bash
-gcc electricity_bill.c -o electricity_bill
+gcc bill.c -o bill
 ```
 
 Run on Windows:
@@ -79,13 +79,13 @@ electricity_bill.exe
 Compile:
 
 ```bash
-gcc banking_system.c -o banking_system
+gcc bank.c -o bank
 ```
 
 Run on Windows:
 
 ```bash
-banking_system.exe
+bank.exe
 ```
 
 *Note: Replace the source filenames in these commands if your files have different names.*
